@@ -13,7 +13,12 @@ const forecast = (lat, long, callback) => {
     } else if (response.body.error) {
       callback(response.body.error, undefined);
     } else {
-      callback(undefined, response.body.currently.summary);
+      console.log("response.body.currently", response.body.currently);
+      callback(undefined, {
+        summary: response.body.currently.summary,
+        time: response.body.currently.time,
+        temperature: response.body.currently.temperature
+      });
     }
   });
 };
